@@ -9,9 +9,13 @@ import wave
 from pydub import AudioSegment
 from pydub.playback import play
 
+from scipy.io import wavfile
+
+import matplotlib.pyplot as plt
+
 CHUNK = 1024
 FORMAT = pyaudio.paInt16  # Portaudio Sample Format 설정
-CHANNELS = 1  # 채널 수
+CHANNELS = 1  # 채널
 RATE = 44100
 RECORD_SECONDS = 5  # 녹음 시간(초)
 
@@ -77,3 +81,16 @@ stereo_sound = AudioSegment.from_mono_audiosegments(
     originalSound, reversedSound)
 play(stereo_sound)
 stereo_sound.export("stereo_sound.wav", format="wav")
+
+
+# 파형 출력 (그래프)
+sample_rate, audio_samples = wavfile.read("stereo_sound.wav", 'rb')
+
+# Show some basic information about the audio.
+duration = len(audio_samples)/sample_rate
+print(f'Sample rate: {sample_rate} Hz')
+print(f'Total duration: {duration:.2f}s')
+print(f'Size of the input: {len(audio_samples)}')
+
+plt.plot(audio_samples)
+plt.show()
