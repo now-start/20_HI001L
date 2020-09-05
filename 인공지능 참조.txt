@@ -1,3 +1,4 @@
 5초간 듣고 이후 나올 파장 예측
 
 https://www.it-swarm.dev/ko/python/%EB%AC%B4%EC%9D%8C-%EA%B0%90%EC%A7%80%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-%EC%98%A4%EB%94%94%EC%98%A4-%ED%8C%8C%EC%9D%BC-%EB%B6%84%ED%95%A0/832729816/
+https://www.tensorflow.org/hub/tutorials/spice
