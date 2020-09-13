@@ -1,4 +1,5 @@
-# 위상 반전, 파장 결합(Merge), 소리 재생 하는 파일
+# invert.py
+# 위상 반전, 파장 결합(Merge), 소리 재생 하는 소스코드
 
 from pydub import AudioSegment
 from pydub.playback import play
