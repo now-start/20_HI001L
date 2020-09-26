@@ -1,4 +1,5 @@
-# 한 스피커로 녹음해서 정위상, 역위상 wav를 생성한 다음 정위상은 왼쪽, 역위상은 오른쪽 스피커에서 재생시키는 프로그램
+# speaker_2_sound.py
+# 한 스피커로 녹음해서 정위상, 역위상 wav를 생성한 다음 정위상은 왼쪽, 역위상은 오른쪽 스피커에서 재생시키는 소스코드
 # (정위상, 역위상 파일을 하나의 스테레오 wav로 만듦)
 
 # 음성(소음) 녹음, 재생 하는 패키지(wav파일)
@@ -71,7 +72,6 @@ reversedSound.export("reversedAudio.wav", format="wav")
 # 정 위상을 왼쪽에서 재생 (스테레오) (pan 100% left)
 # pannedLeft = originalSound.pan(-1)  # -1은 100% 왼쪽으로 이동 시킨다는 의미
 # play(pannedLeft)
-
 # 정 위상을 왼쪽에서 재생 (스테레오) (pan 100% right)
 # pannedRight = reversedSound.pan(1)  # +1은 100% 오른쪽으로 이동 시킨다는 의미
 # play(pannedRight)
