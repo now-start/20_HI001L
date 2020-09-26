@@ -12,21 +12,26 @@ from scipy.io import wavfile
 
 import matplotlib.pyplot as plt
 
-Y_VAL_FILENAME
+Y_VAL_FILENAME = 'y_val.wav'
+PRED_FILENAME = 'pred.wav'
 
-# 지정한 wav 파일 load
-originalSound = AudioSegment.from_file(WAVE_OUTPUT_FILENAME, format="wav")
 
-# 기존 wav 파일 역위상 파장 생성
-reversedSound = originalSound.invert_phase()
+# y_val wav 파일 load
+y_val_sound = AudioSegment.from_file(Y_VAL_FILENAME, format="wav")
+
+# pred wav 파일 load
+pred_sound = AudioSegment.from_file(PRED_FILENAME, format="wav")
+
+# 기존 pred wav 파일 역위상 파장 생성
+reversed_pred_sound = pred_sound.invert_phase()
 
 # 역위상 파장 wav파일로 저장 (생략 가능)
-reversedSound.export("reversedAudio.wav", format="wav")
+reversed_pred_sound.export("reversed_pred.wav", format="wav")
 
-# 정위상 재생
-# play(originalSound)
-# 역위상 재생
-# play(reversedSound)
+# y_val 재생
+# play(y_val_sound)
+# pred 재생
+# play(reversed_pred_sound)
 
 # 정 위상을 왼쪽에서 재생 (스테레오) (pan 100% left)
 # pannedLeft = originalSound.pan(-1)  # -1은 100% 왼쪽으로 이동 시킨다는 의미
@@ -38,13 +43,13 @@ reversedSound.export("reversedAudio.wav", format="wav")
 
 # 스테레오 두 파일을 왼쪽에서 들리는 모노, 오른쪽에서만 들리는 모노로 바꾼다음 합쳐서 하나의 스테레오 파일로 만듦
 stereo_sound = AudioSegment.from_mono_audiosegments(
-    originalSound, reversedSound)
+    y_val_sound, reversed_pred_sound)
 play(stereo_sound)
-stereo_sound.export("stereo_sound.wav", format="wav")
+stereo_sound.export("stereo_sound_AI.wav", format="wav")
 
 
 # 파형 출력 (그래프)
-sample_rate, audio_samples = wavfile.read("stereo_sound.wav", 'rb')
+sample_rate, audio_samples = wavfile.read("stereo_sound_AI.wav", 'rb')
 
 # Show some basic information about the audio.
 duration = len(audio_samples)/sample_rate
